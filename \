@@ -1,0 +1,49 @@
+containers = {
+    'small': 1,
+    'medium': 5,
+    'large': 20,
+    'huge': 50
+}
+
+def sort(widgets):
+    temp = widgets;
+    sortedWidgets = {
+        'small': 0,
+        'medium': 0,
+        'large': 0,
+        'huge': 0
+    }
+
+    while temp > 0:
+        if (temp % containers['huge']  == 0):
+            sortedWidgets['huge'] += 1;
+        elif (temp % containers['large'] == 0):
+            sortedWidgets['large'] += 1;
+        elif (temp % containers['medium'] == 0):
+            sortedWidgets['medium'] += 1;
+        elif (temp % containers['small'] == 0):
+            sortedWidgets['small'] += 1;
+        temp -= 1;
+
+    return sortedWidgets;
+
+
+while True:
+    print("input a non integer to end program");
+    widgets = input("provide the amount of widgets: ");
+    
+    try:
+        widgets = int(widgets);
+    
+    except TypeError:
+        print("You have exited the program");
+        break;
+    
+    sortedWidgets = sort(widgets);
+    
+    print("There are ", end="");
+    print(type(sortedWidgets));
+    for key in sortedWidgets.keys():
+        print(f'{sortedWidgets[key]} {key} boxes', end="");
+
+    print("\n");
